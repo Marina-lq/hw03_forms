@@ -3,7 +3,6 @@ from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404, render
 from django.shortcuts import redirect
-
 from .forms import PostForm
 from .models import Group, Post
 
@@ -92,4 +91,3 @@ def post_edit(request, post_id):
         'posts/includes/post_create.html',
         {'form': form, 'post': post}
     )
-

@@ -22,5 +22,3 @@ class ContactForm(forms.ModelForm):
         model = Contact
         # Укажем, какие поля будут в форме
         fields = ('name', 'email', 'subject', 'body')
-
-
