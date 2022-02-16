@@ -33,5 +33,3 @@ def user_contact(request):
 
     # И в словаре контекста передаём эту форму в HTML-шаблон
     return render(request, 'users/contact.html', {'form': form})
-
-

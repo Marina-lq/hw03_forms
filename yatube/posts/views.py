@@ -1,10 +1,8 @@
+from django.shortcuts import get_object_or_404, render
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import login_required
 from django.core.paginator import Paginator
-from django.shortcuts import get_object_or_404, render
 from django.shortcuts import redirect
-from importlib_metadata.docs.conf import author
-
 from .forms import PostForm
 from .models import Group, Post
 

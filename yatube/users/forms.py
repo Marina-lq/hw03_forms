@@ -1,6 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
-from django.forms import ModelForm
 from .models import Contact
 from django import forms
 
@@ -23,6 +22,3 @@ class ContactForm(forms.ModelForm):
         model = Contact
         # Укажем, какие поля будут в форме
         fields = ('name', 'email', 'subject', 'body')
-
-
-
