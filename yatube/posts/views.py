@@ -23,18 +23,15 @@ def index(request):
     return render(request, 'posts/index.html', context)
 
 
-# View-функция для страницы сообщества:
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
     paginator = Paginator(group.posts.all(), 3)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
-    title = group
     posts = group.posts.all()[:POSTS_PER_PAGE]
     context = {
         'group': group,
         'posts': posts,
-        'title': title,
         'page_obj': page_obj,
         'paginator': paginator
     }
@@ -69,12 +66,14 @@ def post_detail(request, post_id):
 
 @login_required
 def post_create(request):
-    form = PostForm(request.POST or None, files=request.FILES or None)
-    if form.is_valid():
-        form.instance.author = request.user
-        form.save()
-        return redirect('post:profile', request.user)
-    return render(request, 'posts/includes/post_create.html', {'form': form})
+    form = PostForm(request.POST or None)
+    if not form.is_valid():
+        return render(request, 'posts/includes/post_create.html',
+                               {'form': form}
+                      )
+    form.instance.author = request.user
+    form.save()
+    return redirect('post:profile', request.user)
 
 
 @login_required

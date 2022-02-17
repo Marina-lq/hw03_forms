@@ -10,18 +10,18 @@ class Group(models.Model):
         max_length=200,
         null=True,
         blank=True,
-        verbose_name='name'
+        verbose_name='имя'
     )
     slug = models.SlugField(
         unique=True,
         null=True,
         blank=True,
-        verbose_name='address'
+        verbose_name='адрес'
     )
     description = models.TextField(
         null=True,
         blank=True,
-        verbose_name='description of group'
+        verbose_name='описание группы'
     )
 
     def __str__(self):
