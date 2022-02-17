@@ -12,6 +12,15 @@
       Дата публикации: {{ post.pub_date|date:"d E Y" }}
     </li>
   </ul>
+    {% if post.id %}
+    <h> <a href="{% url 'post:post_detail' post.id %}">подробная информация </a></h>
+{% endif %}
+
+<p><a href="{% url 'post:profile' post.author %}">
+  все посты пользователя
+</a></p>
+
+  
   <p>{{ post.text }}</p>    
   {% if post.group %}   
   <a href="{% url 'post:group_posts' post.group.slug %}">все записи группы</a>
